@@ -1,4 +1,5 @@
 import pandas
+import os
 
 
 class Scheduler:
@@ -34,3 +35,10 @@ class Scheduler:
 
         self._tasklist = self._tasklist.drop(self._tasklist.index[task_id])
         return self._tasklist
+
+    def save_tasks(self):
+        """Saves added tasks to the output file."""
+
+    if not os.path.exists('data.csv'):
+        with open('data.csv', 'w') as file:
+            self._tasklist.to_csv(file)

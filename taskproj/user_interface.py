@@ -89,13 +89,18 @@ def main ():
 	label_delete.pack()
 	#### Print section:
 
-
 	def print_result():
 	    answer.set(scheduler.print_tasks())
 
 	print_button = Button(upper_frame, text="Print tasks",
 		font=('helvetica', 12, 'bold'), command=lambda: print_result())
-	print_button.place(relx=0, rely=0.75, relheight=BUTTON_H, relwidth=1)
+	print_button.place(relx=0, rely=0.75, relheight=BUTTON_H/2, relwidth=1)
+
+	### Save section:
+
+	save_button = Button(upper_frame, text="Save tasks",
+		font=('helvetica', 12, 'bold'), command=lambda: scheduler.save_tasks())
+	save_button.place(relx=0, rely=0.875, relheight=BUTTON_H/2, relwidth=1)
 
 	root.mainloop()
 	
