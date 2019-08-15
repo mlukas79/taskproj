@@ -6,8 +6,10 @@ class Scheduler:
 
     def __init__(self):
         """Instantiates an object of Scheduler class."""
-
-        self._tasklist = pandas.DataFrame()
+        try:
+            self._tasklist = pandas.read_csv('data.csv')
+        except:
+            self._tasklist = pandas.DataFrame()
 
     def print_tasks(self):
         return self._tasklist
