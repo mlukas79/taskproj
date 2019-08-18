@@ -1,5 +1,6 @@
 import pandas
 import os
+import numpy
 
 
 class Scheduler:
@@ -8,7 +9,7 @@ class Scheduler:
     def __init__(self):
         """Instantiates an object of Scheduler class."""
         try:
-            self._tasklist = pandas.read_csv('data.csv')
+            self._tasklist = pandas.read_csv(r'/home/lukas.miseikis/.taskproj/data.csv')
         except:
             self._tasklist = pandas.DataFrame()
 
@@ -39,6 +40,11 @@ class Scheduler:
     def save_tasks(self):
         """Saves added tasks to the output file."""
 
-    if not os.path.exists('data.csv'):
-        with open('data.csv', 'w') as file:
+#    if not os.path.exists('/home/.taskproj/data.csv'):
+#        with open('/home/.taskproj/data.csv', 'w') as file:
+#            self._tasklist.to_csv(file)
+        directory = r'/home/lukas.miseikis/.taskproj/'
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        with open(directory+'data.csv', 'w') as file:
             self._tasklist.to_csv(file)

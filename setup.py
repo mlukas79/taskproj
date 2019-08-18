@@ -15,7 +15,7 @@ setup(
     author=about.__author__,
     author_email=about.__author_email__,
     platforms=['windows', 'linux'],
-    install_requires=['pandas'],
+    install_requires=['pandas', 'numpy'],
     entry_points={
         'console_scripts': [
             'taskproj = taskproj.user_interface:main',
