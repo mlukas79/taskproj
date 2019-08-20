@@ -46,5 +46,5 @@ class Scheduler:
         directory = r'/home/lukas.miseikis/.taskproj/'
         if not os.path.exists(directory):
             os.makedirs(directory)
-        with open(directory+'data.csv', 'w') as file:
+        with open(directory+'data.csv', 'w', columns=['task, 'task_status']) as file:
             self._tasklist.to_csv(file)
