@@ -5,11 +5,10 @@ import numpy
 
 class Scheduler:
     """A class to handle task log and their corresponding status."""
-
     def __init__(self):
         """Instantiates an object of Scheduler class."""
         try:
-            self._tasklist = pandas.read_csv(r'/home/lukas.miseikis/.taskproj/data.csv')
+            self._tasklist = pandas.read_csv(r'/home/lukas.miseikis/.taskproj/data.csv', columns=['task, 'task_status'])
         except:
             self._tasklist = pandas.DataFrame()
 
