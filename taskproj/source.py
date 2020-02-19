@@ -1,13 +1,16 @@
 import pandas
+import os
+import numpy
 
 
 class Scheduler:
     """A class to handle task log and their corresponding status."""
-
     def __init__(self):
         """Instantiates an object of Scheduler class."""
-
-        self._tasklist = pandas.DataFrame()
+        try:
+            self._tasklist = pandas.read_csv(r'/home/lukas.miseikis/.taskproj/data.csv', columns=['task, 'task_status'])
+        except:
+            self._tasklist = pandas.DataFrame()
 
     def print_tasks(self):
         return self._tasklist
@@ -32,3 +35,15 @@ class Scheduler:
 
         self._tasklist = self._tasklist.drop(self._tasklist.index[task_id])
         return self._tasklist
+
+    def save_tasks(self):
+        """Saves added tasks to the output file."""
+
+#    if not os.path.exists('/home/.taskproj/data.csv'):
+#        with open('/home/.taskproj/data.csv', 'w') as file:
+#            self._tasklist.to_csv(file)
+        directory = r'/home/lukas.miseikis/.taskproj/'
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        with open(directory+'data.csv', 'w', columns=['task, 'task_status']) as file:
+            self._tasklist.to_csv(file)
